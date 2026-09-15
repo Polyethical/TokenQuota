@@ -1,0 +1,8 @@
+{
+  "source": "EXAMPLE NUMBERS ONLY - replace with prices copied from your providers' pricing pages",
+  "updated": "2026-09-11",
+  "models": {
+    "model-large": { "input_per_mtok": 3.0, "output_per_mtok": 15.0 },
+    "model-small": { "input_per_mtok": 0.25, "output_per_mtok": 1.25 }
+  }
+}

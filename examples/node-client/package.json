@@ -1,0 +1,7 @@
+{
+  "name": "tokenquota-node-client-demo",
+  "private": true,
+  "type": "module",
+  "scripts": { "start": "node demo.mjs" },
+  "dependencies": { "tokenquota": "^0.1.0" }
+}

@@ -1,0 +1,8 @@
+{
+  "source": "FILL IN from the provider's pricing page before use - these are placeholders",
+  "updated": "YYYY-MM-DD",
+  "models": {
+    "claude-sonnet-5": { "input_per_mtok": 0, "output_per_mtok": 0 },
+    "claude-haiku-4-5-20251001": { "input_per_mtok": 0, "output_per_mtok": 0 }
+  }
+}

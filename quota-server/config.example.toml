@@ -1,0 +1,20 @@
+# Copy to config.toml and edit. Plan names are yours: match them to your
+# product's pricing tiers (e.g. the Stripe price a customer is subscribed to).
+
+[server]
+default_plan = "free"      # used when a request doesn't name a plan
+fail_open = true           # if Redis is unreachable: true = let requests through, false = refuse them
+reservation_ttl = 120      # seconds before an uncommitted reservation is released automatically
+prices_file = "prices.example.json"   # only needed for usd = ... plans
+
+[plans.free]
+tokens = 50_000
+period = "month"           # "day", "month" or "total"
+degrade_at = 0.8           # after 80% of the budget, switch to the cheaper model below
+degrade_to = { "model-large" = "model-small" }
+
+[plans.pro]
+usd = 20.00                # a dollar budget, priced with prices_file
+period = "month"
+degrade_at = 0.9
+degrade_to = { "model-large" = "model-small" }

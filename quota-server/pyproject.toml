@@ -1,0 +1,35 @@
+[build-system]
+requires = ["hatchling>=1.27"]
+build-backend = "hatchling.build"
+
+[project]
+name = "tokenquota-server"
+version = "0.1.0"
+description = "Self-hostable HTTP service that enforces per-user AI token and dollar budgets."
+readme = "README.md"
+requires-python = ">=3.10"
+license = "MIT"
+license-files = ["LICENSE"]
+authors = [{ name = "YOUR NAME" }]
+dependencies = [
+  "tokenquota[redis]>=0.1,<0.2",
+  "fastapi>=0.110",
+  "uvicorn>=0.29",
+  "tomli>=2; python_version < '3.11'",
+]
+
+[project.optional-dependencies]
+dev = ["pytest>=8", "httpx>=0.27"]
+
+[project.scripts]
+tokenquota-server = "tokenquota_server.__main__:main"
+
+[project.urls]
+Source = "https://github.com/YOUR-ORG/quota-server"
+Issues = "https://github.com/YOUR-ORG/quota-server/issues"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/tokenquota_server"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]

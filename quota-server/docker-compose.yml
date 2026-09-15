@@ -1,0 +1,24 @@
+# Local setup: cp config.example.toml config.toml && docker compose up
+services:
+  redis:
+    image: redis:7
+    command: ["redis-server", "--appendonly", "yes"]
+    volumes:
+      - redis-data:/data
+
+  quota-server:
+    build: .
+    # or, once published: image: ghcr.io/YOUR-ORG/quota-server:0.1
+    ports:
+      - "8080:8080"
+    environment:
+      REDIS_URL: redis://redis:6379/0
+      TOKENQUOTA_API_KEY: ${TOKENQUOTA_API_KEY:-dev-key}   # change for anything non-local
+    volumes:
+      - ./config.toml:/config/config.toml:ro
+      - ./prices.example.json:/config/prices.example.json:ro
+    depends_on:
+      - redis
+
+volumes:
+  redis-data:
